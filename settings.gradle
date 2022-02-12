@@ -1,0 +1,3 @@
+rootProject.name = 'Gestiune_Biblioteca'
+include 'wildfly'
+
