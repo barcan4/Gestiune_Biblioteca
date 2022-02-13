@@ -3,6 +3,7 @@ package clients;
 import entities.Carte;
 import entities.User;
 import interfaces.ICarti;
+import interfaces.IInchirieri;
 import interfaces.IUser;
 
 import javax.ejb.EJB;
@@ -20,6 +21,12 @@ public class ServletDispatcher extends HttpServlet {
 
     @EJB
     private ICarti carti;
+
+    @EJB
+    private IInchirieri inchirieri;
+
+    @EJB
+    private IUser useri;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -61,8 +68,10 @@ public class ServletDispatcher extends HttpServlet {
 
         if(action!=null && action.equals("rent")){
             int cID = Integer.parseInt(req.getParameter("cID"));
-            String titlu = req.getParameter("titlu");
-            System.out.println("----------------> Inchireaza "+ cID + titlu);
+            //User user = (User) req.getSession().getAttribute("user_logged");
+            //int uID = user.getUID();
+            int testID = 2;
+            inchirieri.rent(testID, cID);
             doGet(req, resp);
         }
 //        super.doPost(req, resp);

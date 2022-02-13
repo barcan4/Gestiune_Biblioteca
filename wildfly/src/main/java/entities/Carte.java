@@ -2,6 +2,8 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name="carti")
@@ -14,9 +16,8 @@ public class Carte implements Serializable {
     private String editura;
     private int anPublicatie;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="uID")
-    private User user;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "carte")
+    private Collection<User> useri = new ArrayList<>();
 
     public Carte() {}
 
@@ -75,12 +76,12 @@ public class Carte implements Serializable {
         this.anPublicatie = anPublicatie;
     }
 
-    public User getUser() {
-        return user;
+    public Collection<User> getUseri() {
+        return useri;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUseri(Collection<User> useri) {
+        this.useri = useri;
     }
 
     @Override
@@ -91,7 +92,7 @@ public class Carte implements Serializable {
                 ", autor='" + autor + '\'' +
                 ", editura='" + editura + '\'' +
                 ", anPublicatie=" + anPublicatie +
-                ", user=" + user +
+                ", useri=" + useri +
                 '}';
     }
 }

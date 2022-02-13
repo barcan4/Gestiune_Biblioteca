@@ -18,6 +18,11 @@ public class UserBean implements IUser {
     private EntityManager entityManager;
 
     @Override
+    public User logIn(String user_name, String parola) {
+        return null;
+    }
+
+    @Override
     public User add(User user) {
         entityManager.persist(user);
         return user;
@@ -53,10 +58,5 @@ public class UserBean implements IUser {
         }
 
         return vechiUser;
-    }
-
-    @Override
-    public Carte rent(int cID) {
-        return null;
     }
 }
