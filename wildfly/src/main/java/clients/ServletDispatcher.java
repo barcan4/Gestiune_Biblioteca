@@ -39,10 +39,10 @@ public class ServletDispatcher extends HttpServlet {
         }
 
         if (user_logged.isAdmin()) {
-            resp.sendRedirect(req.getContextPath() + "carti.jsp");
+            resp.sendRedirect(req.getContextPath() + "/carti.jsp");
         }
         else {
-            resp.sendRedirect(req.getContextPath() + "carti_user.jsp");
+            resp.sendRedirect(req.getContextPath() + "/carti_user.jsp");
         }
     }
 
