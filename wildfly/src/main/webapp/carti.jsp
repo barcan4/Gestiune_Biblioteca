@@ -44,5 +44,16 @@
         }
     %>
 </table>
+
+
+<form action="${pageContext.request.contextPath}/dispatcher" method="POST">
+    <input type="hidden" name="action" value="add">
+    Titlu: <input type="text" name="titlu">
+    Autor: <input type="text" name="autor">
+    Editura: <input type="text" name="editura">
+    An publicatie: <input type="text" name="anPub">
+    <input type="submit" value="Adauga">
+</form>
+
 </body>
 </html>

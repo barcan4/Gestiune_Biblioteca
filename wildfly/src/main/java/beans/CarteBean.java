@@ -18,6 +18,7 @@ public class CarteBean implements ICarti {
 
     @Override
     public Carte add(Carte carte) {
+        System.out.println("===================================" +  carte.toString());
         entityManager.persist(carte);
         return carte;
     }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name="carti")
 public class Carte implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cID;
     private String titlu;
     private String autor;
@@ -22,6 +22,13 @@ public class Carte implements Serializable {
 
     public Carte(int cID, String titlu, String autor, String editura, int anPublicatie) {
         this.cID = cID;
+        this.titlu = titlu;
+        this.autor = autor;
+        this.editura = editura;
+        this.anPublicatie = anPublicatie;
+    }
+
+    public Carte(String titlu, String autor, String editura, int anPublicatie) {
         this.titlu = titlu;
         this.autor = autor;
         this.editura = editura;

@@ -25,7 +25,9 @@ public class ServletDispatcher extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Carte> carteList = carti.getCarti();
         req.getSession().setAttribute("carteList", carteList);
-        resp.sendRedirect(req.getContextPath() + "/carti.jsp");
+        //if - logged in as admin / else
+//        resp.sendRedirect(req.getContextPath() + "/carti.jsp");
+        resp.sendRedirect(req.getContextPath() + "/carti_user.jsp");
         //req.getRequestDispatcher(req.getContextPath() + "WEB-INF/carti.jsp").forward(req, resp);
     }
 
@@ -44,6 +46,23 @@ public class ServletDispatcher extends HttpServlet {
         if(action!=null && action.equals("delete")){
             int cID = Integer.parseInt(req.getParameter("cID"));
             carti.delete(cID);
+            doGet(req, resp);
+        }
+
+        if(action!=null && action.equals("add")){
+            String titlu = req.getParameter("titlu");
+            String autor = req.getParameter("autor");
+            String editura = req.getParameter("editura");
+            int anPub = Integer.parseInt(req.getParameter("anPub"));
+            Carte c = new Carte(titlu,autor,editura,anPub);
+            carti.add(c);
+            doGet(req, resp);
+        }
+
+        if(action!=null && action.equals("rent")){
+            int cID = Integer.parseInt(req.getParameter("cID"));
+            String titlu = req.getParameter("titlu");
+            System.out.println("----------------> Inchireaza "+ cID + titlu);
             doGet(req, resp);
         }
 //        super.doPost(req, resp);
