@@ -33,6 +33,11 @@
             <td><input type="text" name="anPub" value="<%=c.getAnPublicatie()%>" readonly></td>
             <td><input type="submit" name="rentBtn" value="Inchireaza" ></td>
         </form>
+        <form action="${pageContext.request.contextPath}/dispatcher" method="POST">
+            <input type="hidden" name="action" value="return">
+            <input type="hidden" name="cID" value="<%=c.getcID()%>" readonly>
+            <td><input type="submit" name="returnBtn" value="Returneaza" ></td>
+        </form>
     </tr>
     <%
         }

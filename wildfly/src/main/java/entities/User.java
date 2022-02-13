@@ -10,7 +10,7 @@ import java.util.Collection;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uID;
     private String nume;
     private String prenume;
@@ -18,8 +18,8 @@ public class User implements Serializable {
     private String parola;
     private boolean isAdmin;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private Collection<Carte> carti = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER,  targetEntity = Inchirieri.class, mappedBy = "user")
+    private Collection<Inchirieri> inchirieri = new ArrayList<>();
 
     public User() {}
 
@@ -80,12 +80,12 @@ public class User implements Serializable {
         isAdmin = admin;
     }
 
-    public Collection<Carte> getCarti() {
-        return carti;
+    public Collection<Inchirieri> getInchirieri() {
+        return inchirieri;
     }
 
-    public void setCarti(Collection<Carte> carti) {
-        this.carti = carti;
+    public void setInchirieri(Collection<Inchirieri> inchirieri) {
+        this.inchirieri = inchirieri;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class User implements Serializable {
                 ", user_name='" + user_name + '\'' +
                 ", parola='" + parola + '\'' +
                 ", isAdmin=" + isAdmin +
-                ", carti=" + carti +
+                ", inchirieri=" + inchirieri +
                 '}';
     }
 }

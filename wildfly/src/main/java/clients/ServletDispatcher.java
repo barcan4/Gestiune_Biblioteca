@@ -71,10 +71,18 @@ public class ServletDispatcher extends HttpServlet {
             //User user = (User) req.getSession().getAttribute("user_logged");
             //int uID = user.getUID();
             int testID = 2;
-            inchirieri.rent(testID, cID);
+            inchirieri.rent(useri.find(testID), carti.find(cID));
             doGet(req, resp);
         }
-//        super.doPost(req, resp);
+
+        if(action!=null && action.equals("return")){
+            int cID = Integer.parseInt(req.getParameter("cID"));
+            //User user = (User) req.getSession().getAttribute("user_logged");
+            //int uID = user.getUID();
+            int testID = 2;
+            inchirieri.returnC(useri.find(testID), carti.find(cID));
+            doGet(req, resp);
+        }
     }
 
 

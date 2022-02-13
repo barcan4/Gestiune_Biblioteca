@@ -1,8 +1,10 @@
 package interfaces;
 
+import entities.Carte;
 import entities.Inchirieri;
+import entities.User;
 
 public interface IInchirieri {
-    Inchirieri rent(int uID, int cID);
-    Inchirieri returnC(int uID, int cID);
+    Inchirieri rent(User user, Carte carte);
+    Inchirieri returnC(User user, Carte carte);
 }

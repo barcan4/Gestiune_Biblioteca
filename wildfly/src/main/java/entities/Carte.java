@@ -16,8 +16,8 @@ public class Carte implements Serializable {
     private String editura;
     private int anPublicatie;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "carte")
-    private Collection<User> useri = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Inchirieri.class, mappedBy = "carte")
+    private Collection<Inchirieri> inchirieri = new ArrayList<>();
 
     public Carte() {}
 
@@ -76,12 +76,12 @@ public class Carte implements Serializable {
         this.anPublicatie = anPublicatie;
     }
 
-    public Collection<User> getUseri() {
-        return useri;
+    public Collection<Inchirieri> getInchirieri() {
+        return inchirieri;
     }
 
-    public void setUseri(Collection<User> useri) {
-        this.useri = useri;
+    public void setInchirieri(Collection<Inchirieri> inchirieri) {
+        this.inchirieri = inchirieri;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Carte implements Serializable {
                 ", autor='" + autor + '\'' +
                 ", editura='" + editura + '\'' +
                 ", anPublicatie=" + anPublicatie +
-                ", useri=" + useri +
+                ", inchirieri=" + inchirieri +
                 '}';
     }
 }

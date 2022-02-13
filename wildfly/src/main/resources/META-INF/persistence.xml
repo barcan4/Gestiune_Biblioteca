@@ -8,6 +8,7 @@
     <jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source>
     <class>entities.User</class>
     <class>entities.Carte</class>
+    <class>entities.Inchirieri</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect"/>
       <property name="hibernate.show_sql" value="true"/>

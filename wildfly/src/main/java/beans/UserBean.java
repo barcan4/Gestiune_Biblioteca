@@ -18,11 +18,6 @@ public class UserBean implements IUser {
     private EntityManager entityManager;
 
     @Override
-    public User logIn(String user_name, String parola) {
-        return null;
-    }
-
-    @Override
     public User add(User user) {
         entityManager.persist(user);
         return user;
