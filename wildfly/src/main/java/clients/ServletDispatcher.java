@@ -32,10 +32,18 @@ public class ServletDispatcher extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Carte> carteList = carti.getCarti();
         req.getSession().setAttribute("carteList", carteList);
-        //if - logged in as admin / else
-//        resp.sendRedirect(req.getContextPath() + "/carti.jsp");
-        resp.sendRedirect(req.getContextPath() + "/carti_user.jsp");
-        //req.getRequestDispatcher(req.getContextPath() + "WEB-INF/carti.jsp").forward(req, resp);
+
+        User user_logged = (User) req.getSession().getAttribute("user_logged");
+        if (user_logged == null) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        }
+
+        if (user_logged.isAdmin()) {
+            resp.sendRedirect(req.getContextPath() + "carti.jsp");
+        }
+        else {
+            resp.sendRedirect(req.getContextPath() + "carti_user.jsp");
+        }
     }
 
     @Override
@@ -68,19 +76,15 @@ public class ServletDispatcher extends HttpServlet {
 
         if(action!=null && action.equals("rent")){
             int cID = Integer.parseInt(req.getParameter("cID"));
-            //User user = (User) req.getSession().getAttribute("user_logged");
-            //int uID = user.getUID();
-            int testID = 2;
-            inchirieri.rent(useri.find(testID), carti.find(cID));
+            User user = (User) req.getSession().getAttribute("user_logged");
+            inchirieri.rent(user, carti.find(cID));
             doGet(req, resp);
         }
 
         if(action!=null && action.equals("return")){
             int cID = Integer.parseInt(req.getParameter("cID"));
-            //User user = (User) req.getSession().getAttribute("user_logged");
-            //int uID = user.getUID();
-            int testID = 2;
-            inchirieri.returnC(useri.find(testID), carti.find(cID));
+            User user = (User) req.getSession().getAttribute("user_logged");
+            inchirieri.returnC(user, carti.find(cID));
             doGet(req, resp);
         }
     }

@@ -1,12 +1,15 @@
 <%@ page import="entities.Carte" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Barcoaie
-  Date: 13.02.2022
-  Time: 12:04
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="entities.User" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%! User user;%>
+<%
+    user = (User) session.getAttribute("user_logged");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+    }
+%>
 <% List<Carte> carteList = (List<Carte>) session.getAttribute("carteList");%>
 <html>
 <head>

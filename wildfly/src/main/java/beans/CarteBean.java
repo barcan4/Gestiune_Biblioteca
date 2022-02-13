@@ -2,6 +2,7 @@ package beans;
 
 import entities.Carte;
 import interfaces.ICarti;
+
 import javax.persistence.PersistenceContext;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -18,7 +19,6 @@ public class CarteBean implements ICarti {
 
     @Override
     public Carte add(Carte carte) {
-        System.out.println("===================================" +  carte.toString());
         entityManager.persist(carte);
         return carte;
     }
@@ -44,8 +44,7 @@ public class CarteBean implements ICarti {
     @Override
     public Carte edit(Carte nouaCarte) {
         Carte vecheCarte = find(nouaCarte.getcID());
-        System.out.println("******************* vecheaCarte: " + vecheCarte.toString());
-        System.out.println("******************* nouaCarte: " + nouaCarte.toString());
+
         if (vecheCarte != null) {
             entityManager.createQuery("update Carte c set c.titlu='" + nouaCarte.getTitlu() +
                     "' , c.autor='"+ nouaCarte.getAutor() +

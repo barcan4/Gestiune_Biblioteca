@@ -24,7 +24,7 @@ public class InchirieriBean implements IInchirieri {
     public Inchirieri rent(User user, Carte carte) {
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
-        System.out.println("-----> " + user + carte);
+
         Inchirieri inchiriere = new Inchirieri(formatter.format(date), "", user, carte);
         entityManager.persist(inchiriere);
         return inchiriere;
@@ -34,6 +34,7 @@ public class InchirieriBean implements IInchirieri {
     public Inchirieri returnC(User user, Carte carte) {
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
+
         TypedQuery<Inchirieri> query = entityManager.createQuery("select inc from Inchirieri inc where inc.user=" + user.getuID() + " and inc.carte=" + carte.getcID(), Inchirieri.class);
         Inchirieri result = query.getSingleResult();
 

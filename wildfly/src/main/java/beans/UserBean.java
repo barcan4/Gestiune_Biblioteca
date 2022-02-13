@@ -18,6 +18,14 @@ public class UserBean implements IUser {
     private EntityManager entityManager;
 
     @Override
+    public User logIn(String user_name, String parola) {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.user_name='" + user_name
+                + "' and u.parola='" + parola
+                + "'", User.class);
+        return query.getSingleResult();
+    }
+
+    @Override
     public User add(User user) {
         entityManager.persist(user);
         return user;
