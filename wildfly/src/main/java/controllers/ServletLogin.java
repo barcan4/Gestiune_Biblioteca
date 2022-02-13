@@ -1,4 +1,4 @@
-package clients;
+package controllers;
 
 import entities.User;
 import interfaces.IUser;

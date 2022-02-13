@@ -13,6 +13,7 @@
 <% List<Carte> carteList = (List<Carte>) session.getAttribute("carteList");%>
 <html>
 <head>
+    <link rel="stylesheet" href="styles.css">
     <title>Carti Page</title>
 </head>
 <body>
