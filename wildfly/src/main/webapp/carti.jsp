@@ -24,11 +24,21 @@
         for (Carte c : carteList) {
     %>
         <tr>
-            <td><input type="hidden" name="cID" value="<%=c.getcID()%>"></td>
-            <td><input type="text" name="cID" value="<%=c.getTitlu()%>" readonly></td>
-            <td><input type="text" name="cID" value="<%=c.getAutor()%>" readonly></td>
-            <td><input type="text" name="cID" value="<%=c.getEditura()%>" readonly></td>
-            <td><input type="text" name="cID" value="<%=c.getAnPublicatie()%>" readonly></td>
+            <form action="${pageContext.request.contextPath}/dispatcher" method="POST">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="cID" value="<%=c.getcID()%>">
+                <td><input type="text" name="titlu" value="<%=c.getTitlu()%>" readonly></td>
+                <td><input type="text" name="autor" value="<%=c.getAutor()%>" readonly></td>
+                <td><input type="text" name="editura" value="<%=c.getEditura()%>" ></td>
+                <td><input type="text" name="anPub" value="<%=c.getAnPublicatie()%>" readonly></td>
+                <td><input type="submit" name="updateBtn" value="Actualizeaza"></td>
+            </form>
+
+            <form action="${pageContext.request.contextPath}/dispatcher" method="POST">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="cID" value="<%=c.getcID()%>">
+                <td><input type="submit" name="deleteBtn" value="Sterge"></td>
+            </form>
         </tr>
     <%
         }

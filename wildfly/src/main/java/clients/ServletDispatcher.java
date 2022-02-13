@@ -27,4 +27,20 @@ public class ServletDispatcher extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/carti.jsp");
         //req.getRequestDispatcher(req.getContextPath() + "WEB-INF/carti.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+//        if(action!=null && action.equals("update")){
+//            String cID = req.getParameter("cID");
+//        }
+        if(action!=null && action.equals("delete")){
+            int cID = Integer.parseInt(req.getParameter("cID"));
+            carti.delete(cID);
+            resp.sendRedirect(req.getContextPath() + "/carti.jsp");
+        }
+//        super.doPost(req, resp);
+    }
+
+
 }
