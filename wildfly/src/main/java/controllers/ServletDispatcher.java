@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Carte;
+import entities.Inchirieri;
 import entities.User;
 import interfaces.ICarti;
 import interfaces.IInchirieri;
@@ -36,6 +37,9 @@ public class ServletDispatcher extends HttpServlet {
         if (user_logged == null) {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
+
+        List<Inchirieri> incList = inchirieri.getInchirieri(user_logged);
+        req.getSession().setAttribute("incList", incList);
 
         if (user_logged.isAdmin()) {
             resp.sendRedirect(req.getContextPath() + "/carti.jsp");
@@ -84,6 +88,14 @@ public class ServletDispatcher extends HttpServlet {
             int cID = Integer.parseInt(req.getParameter("cID"));
             User user = (User) req.getSession().getAttribute("user_logged");
             inchirieri.returnC(user, carti.find(cID));
+            resp.sendRedirect(req.getContextPath() + "/inchirieri.jsp");
+        }
+
+        if(action != null && action.equals("goToInc")) {
+            resp.sendRedirect(req.getContextPath() + "/inchirieri.jsp");
+        }
+
+        if (action != null && action.equals("goBack")) {
             doGet(req, resp);
         }
     }

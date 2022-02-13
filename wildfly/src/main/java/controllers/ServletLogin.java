@@ -29,12 +29,18 @@ public class ServletLogin extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String user_name = req.getParameter("user_name");
         String parola = req.getParameter("parola");
+
+        String action = req.getParameter("action");
         if (user_name != null && parola != null) {
             User user_logged = user.logIn(user_name, parola);
             if (user_logged != null) {
                 req.getSession().setAttribute("user_logged", user_logged);
                 resp.sendRedirect(req.getContextPath() + "/dispatcher");
             }
+        }
+        if (action != null && action.equals("logout")) {
+            req.getSession().setAttribute("user_logged", null);
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
         doGet(req, resp);
     }

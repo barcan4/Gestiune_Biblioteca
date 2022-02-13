@@ -59,5 +59,12 @@
     <input type="submit" value="Adauga">
 </form>
 
+<br/>
+<br/>
+
+<form action="${pageContext.request.contextPath}/login" method="POST">
+    <input type="hidden" name="action" value="logout">
+    <input type="submit" value="Log out">
+</form>
 </body>
 </html>
