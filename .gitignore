@@ -1,0 +1,4 @@
+# Project exclude paths
+/.gradle/
+/wildfly/build/
+/wildfly/build/classes/java/main/
