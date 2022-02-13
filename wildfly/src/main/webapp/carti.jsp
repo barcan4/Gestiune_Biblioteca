@@ -27,10 +27,10 @@
             <form action="${pageContext.request.contextPath}/dispatcher" method="POST">
                 <input type="hidden" name="action" value="update">
                 <input type="hidden" name="cID" value="<%=c.getcID()%>">
-                <td><input type="text" name="titlu" value="<%=c.getTitlu()%>" readonly></td>
-                <td><input type="text" name="autor" value="<%=c.getAutor()%>" readonly></td>
+                <td><input type="text" name="titlu" value="<%=c.getTitlu()%>" ></td>
+                <td><input type="text" name="autor" value="<%=c.getAutor()%>" ></td>
                 <td><input type="text" name="editura" value="<%=c.getEditura()%>" ></td>
-                <td><input type="text" name="anPub" value="<%=c.getAnPublicatie()%>" readonly></td>
+                <td><input type="text" name="anPub" value="<%=c.getAnPublicatie()%>" ></td>
                 <td><input type="submit" name="updateBtn" value="Actualizeaza"></td>
             </form>
 

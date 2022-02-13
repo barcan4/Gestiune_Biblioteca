@@ -6,6 +6,7 @@ import interfaces.ICarti;
 import interfaces.IUser;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +32,19 @@ public class ServletDispatcher extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-//        if(action!=null && action.equals("update")){
-//            String cID = req.getParameter("cID");
-//        }
+        if(action!=null && action.equals("update")){
+            int cID = Integer.parseInt(req.getParameter("cID"));
+            String titlu = req.getParameter("titlu");
+            String autor = req.getParameter("autor");
+            String editura = req.getParameter("editura");
+            int anPub = Integer.parseInt(req.getParameter("anPub"));
+            carti.edit(new Carte(cID, titlu, autor, editura, anPub));
+            doGet(req, resp);
+        }
         if(action!=null && action.equals("delete")){
             int cID = Integer.parseInt(req.getParameter("cID"));
             carti.delete(cID);
-            resp.sendRedirect(req.getContextPath() + "/carti.jsp");
+            doGet(req, resp);
         }
 //        super.doPost(req, resp);
     }

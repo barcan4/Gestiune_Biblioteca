@@ -43,12 +43,14 @@ public class CarteBean implements ICarti {
     @Override
     public Carte edit(Carte nouaCarte) {
         Carte vecheCarte = find(nouaCarte.getcID());
+        System.out.println("******************* vecheaCarte: " + vecheCarte.toString());
+        System.out.println("******************* nouaCarte: " + nouaCarte.toString());
         if (vecheCarte != null) {
             entityManager.createQuery("update Carte c set c.titlu='" + nouaCarte.getTitlu() +
                     "' , c.autor='"+ nouaCarte.getAutor() +
                     "' , c.editura='" + nouaCarte.getEditura() +
-                    "' , c.anPublicatie='" + nouaCarte.getAnPublicatie() +
-                    "' , c.uID='" + nouaCarte.getUser().getuID() + "'");
+                    "' , c.anPublicatie=" + nouaCarte.getAnPublicatie() +
+                    " where c.cID=" + vecheCarte.getcID()).executeUpdate();
         }
         return vecheCarte;
     }
