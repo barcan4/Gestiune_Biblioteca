@@ -12,24 +12,29 @@
 </head>
 <body>
 <script>
-  function validatePass(event) {
-    var pass = document.getElementById("pass").value
-    var passAgain = document.getElementById("passAgain").value
+  function validatePass() {
+    let pass = document.forms["loginForm"]["parolaReg"].value;
+    let passAgain = document.forms["loginForm"]["parolaAgain"].value;
+    let err = document.getElementById("error");
+    err.innerHTML = "";
 
     if (pass !== passAgain) {
-      event.preventDefault()
+      err.style.color = "red";
+      err.innerHTML = "Parola repetata nu e identica!";
+      return false;
     }
   }
 </script>
-  <form action="${pageContext.request.contextPath}/login" method="POST" onsubmit="validatePass()">
+  <form name="loginForm" action="${pageContext.request.contextPath}/login" method="POST" onsubmit="return validatePass()">
     <input type="hidden" name="action" value="addUser"/>
     <input type="text" name="nume" required/>
     <input type="text" name="prenume" required/>
     <input type="text" name="user_nameReg" required/>
-    <input type="password" name="parolaReg" id="pass" required/>
-    <input type="password" name="parolaAgain" id="passAgain" required/>
+    <input type="password" name="parolaReg" required/>
+    <input type="password" name="parolaAgain" required/>
     <input type="submit" name="registerBtn" value="Register">
   </form>
+  <p id="error"></p>
   <form action="${pageContext.request.contextPath}/login" method="GET">
     <input type="hidden" name="action" value="backLogin">
     <input type="submit" name="backBtn" value="Back to Login">
