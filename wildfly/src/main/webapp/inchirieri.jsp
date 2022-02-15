@@ -6,6 +6,7 @@
 <%! User user;%>
 <%
     user = (User) session.getAttribute("user_logged");
+    String user_name = (String) session.getAttribute("user_name");
     if (user == null) {
         response.sendRedirect(request.getContextPath() + "/login.jsp");
     }
@@ -18,13 +19,15 @@
     <title>Inchirieri Page</title>
 </head>
 <body>
+<p> Autentificat ca <i><%= user_name %> </i></p>
+
 <div class="nav-btns">
 <form action="${pageContext.request.contextPath}/dispatcher" method="POST">
     <input type="hidden" name="action" value="goBack">
     <input class="button-inchireaza" type="submit" value="Inapoi la carti">
 </form>
 </div>
-<h1> Lista cartiilor imprumutate de tine</h1>
+<h2> Lista cartiilor imprumutate de tine</h2>
 <div class="container">
 <div class="table">
     <div class="table-header">

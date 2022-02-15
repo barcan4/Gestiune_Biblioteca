@@ -24,7 +24,7 @@
 
 </head>
 <body style="margin: 17px;">
-
+<p> Autentificat ca <i><%= user_name %> </i></p>
 <div class="nav-btns">
 <form style="margin-right: 10px" action="${pageContext.request.contextPath}/dispatcher" method="POST">
     <input type="hidden" name="action" value="goToInc">
