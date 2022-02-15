@@ -64,6 +64,11 @@ public class InchirieriBean implements IInchirieri {
     }
 
     @Override
+    public void removeInchirieri(Carte carte) {
+        entityManager.createQuery("delete from Inchirieri inc where inc.carte = " + carte.getcID()).executeUpdate();
+    }
+
+    @Override
     public Inchirieri returnC(User user, Carte carte) {
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());

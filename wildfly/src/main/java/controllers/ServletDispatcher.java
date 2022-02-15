@@ -63,6 +63,7 @@ public class ServletDispatcher extends HttpServlet {
         }
         if(action!=null && action.equals("delete")){
             int cID = Integer.parseInt(req.getParameter("cID"));
+            inchirieri.removeInchirieri(carti.find(cID));
             carti.delete(cID);
             doGet(req, resp);
         }

@@ -41,6 +41,8 @@
 
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inregistreaza-te</h3>
 
+            <input type="hidden" name="action" value="addUser" />
+
             <div class="form-outline mb-4">
               <label class="form-label" for="form2Example18">Nume</label>
               <input type="text" id="form2Example18" name="nume" class="form-control form-control-lg" required/>
@@ -49,12 +51,12 @@
 
             <div class="form-outline mb-4">
               <label class="form-label" for="form2Example38">Prenume</label>
-              <input type="text" id="form2Example38" name="user_nameReg" class="form-control form-control-lg" required/>
+              <input type="text" id="form2Example38" name="prenume" class="form-control form-control-lg" required/>
 
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form2Example48">Username</label>
-              <input type="text" id="form2Example48" name="prenume" class="form-control form-control-lg" required/>
+              <input type="text" id="form2Example48" name="user_nameReg" class="form-control form-control-lg" required/>
 
             </div>
             <div class="form-outline mb-4">
