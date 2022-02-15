@@ -8,7 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Inregistrare Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>Inregistrare</title>
 </head>
 <body>
 <script>
@@ -25,19 +29,63 @@
     }
   }
 </script>
-  <form name="loginForm" action="${pageContext.request.contextPath}/login" method="POST" onsubmit="return validatePass()">
-    <input type="hidden" name="action" value="addUser"/>
-    <input type="text" name="nume" required/>
-    <input type="text" name="prenume" required/>
-    <input type="text" name="user_nameReg" required/>
-    <input type="password" name="parolaReg" required/>
-    <input type="password" name="parolaAgain" required/>
-    <input type="submit" name="registerBtn" value="Register">
-  </form>
-  <p id="error"></p>
-  <form action="${pageContext.request.contextPath}/login" method="GET">
-    <input type="hidden" name="action" value="backLogin">
-    <input type="submit" name="backBtn" value="Back to Login">
-  </form>
+
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form name="loginForm" action="${pageContext.request.contextPath}/login" method="POST" onsubmit="return validatePass()">
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inregistreaza-te</h3>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example18">Nume</label>
+              <input type="text" id="form2Example18" name="nume" class="form-control form-control-lg" required/>
+
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example38">Prenume</label>
+              <input type="text" id="form2Example38" name="user_nameReg" class="form-control form-control-lg" required/>
+
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example48">Username</label>
+              <input type="text" id="form2Example48" name="prenume" class="form-control form-control-lg" required/>
+
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example58">Parola</label>
+              <input type="password" id="form2Example58" name="parolaReg" class="form-control form-control-lg" required/>
+
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example68">Confirma Parola</label>
+              <input type="password" id="form2Example68" name="parolaAgain" class="form-control form-control-lg" required/>
+              <p id="error"></p>
+            </div>
+
+            <div class="pt-1 mb-4">
+              <input class="btn btn-info btn-lg btn-block" type="submit" name="registerBtn" value="Register">
+            </div>
+          </form>
+
+        </div>
+
+        <form action="${pageContext.request.contextPath}/login" method="GET">
+          <input type="hidden" name="action" value="backLogin">
+           <input style="margin-left: 40px; color: #06a7ba; border: none;background: transparent;" type="submit" class="link-info" value="Back to login" />
+        </form>
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://source.unsplash.com/random" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>

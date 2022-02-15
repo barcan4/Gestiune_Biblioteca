@@ -52,7 +52,7 @@
 
                 <form action="${pageContext.request.contextPath}/login" method="POST">
                     <input type="hidden" name="action" value="register"/>
-                    <p>Don't have an account? <input type="submit" class="link-info" value="Register here" /></p>
+                    <p style="margin-left: 50px">Don't have an account? <input style="color: #06a7ba; border: none;background: transparent;" type="submit" class="link-info" value="Register here" /></p>
                 </form>
 
             </div>
