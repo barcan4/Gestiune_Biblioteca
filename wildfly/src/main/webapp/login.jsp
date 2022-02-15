@@ -33,25 +33,27 @@
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example18">Username</label>
-                            <input type="text" id="form2Example18" name="user_name" class="form-control form-control-lg" />
+                            <input type="text" id="form2Example18" name="user_name" class="form-control form-control-lg" required/>
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example28">Password</label>
-                            <input type="password" id="form2Example28" name="parola" class="form-control form-control-lg" />
+                            <input type="password" id="form2Example28" name="parola" class="form-control form-control-lg" required/>
 
                         </div>
 
                         <div class="pt-1 mb-4">
-                            <input class="btn btn-info btn-lg btn-block" type="submit" value="Login"></input>
+                            <input class="btn btn-info btn-lg btn-block" type="submit" value="Login"/>
                         </div>
-
-                        <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
-
                     </form>
 
                 </div>
+
+                <form action="${pageContext.request.contextPath}/login" method="POST">
+                    <input type="hidden" name="action" value="register"/>
+                    <p>Don't have an account? <input type="submit" class="link-info" value="Register here" /></p>
+                </form>
 
             </div>
             <div class="col-sm-6 px-0 d-none d-sm-block">

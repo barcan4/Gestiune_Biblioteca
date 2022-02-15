@@ -23,6 +23,12 @@ public class ServletLogin extends HttpServlet {
         if (user_logged != null) {
             resp.sendRedirect(req.getContextPath() + "/dispatcher");
         }
+
+        String action = req.getParameter("action");
+
+        if (action != null && action.equals("backLogin")) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        }
     }
 
     @Override
@@ -31,7 +37,7 @@ public class ServletLogin extends HttpServlet {
         String parola = req.getParameter("parola");
 
         String action = req.getParameter("action");
-        if (user_name != null && parola != null) {
+        if ((user_name != null && parola != null) && (!user_name.equals("") && !parola.equals(""))) {
             User user_logged = user.logIn(user_name, parola);
             if (user_logged != null) {
                 req.getSession().setAttribute("user_logged", user_logged);
@@ -39,10 +45,26 @@ public class ServletLogin extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + "/dispatcher");
             }
         }
+
         if (action != null && action.equals("logout")) {
             req.getSession().setAttribute("user_logged", null);
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
+
+        if (action != null && action.equals("register")) {
+            resp.sendRedirect(req.getContextPath() + "/register.jsp");
+        }
+
+        if (action != null && action.equals("addUser")) {
+            String nume = req.getParameter("nume");
+            String prenume = req.getParameter("prenume");
+            String user_nameReg = req.getParameter("user_nameReg");
+            String parolaReg = req.getParameter("parolaReg");
+
+            user.add(new User(nume, prenume, user_nameReg, parolaReg, false));
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        }
+
         doGet(req, resp);
     }
 }

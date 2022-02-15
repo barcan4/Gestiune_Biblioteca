@@ -32,6 +32,14 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
     }
 
+    public User(String nume, String prenume, String user_name, String parola, boolean isAdmin) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.user_name = user_name;
+        this.parola = parola;
+        this.isAdmin = isAdmin;
+    }
+
     public int getuID() {
         return uID;
     }

@@ -88,6 +88,8 @@ public class ServletDispatcher extends HttpServlet {
             int cID = Integer.parseInt(req.getParameter("cID"));
             User user = (User) req.getSession().getAttribute("user_logged");
             inchirieri.returnC(user, carti.find(cID));
+            List<Inchirieri> incList = inchirieri.getInchirieri((User) req.getSession().getAttribute("user_logged"));
+            req.getSession().setAttribute("incList", incList);
             resp.sendRedirect(req.getContextPath() + "/inchirieri.jsp");
         }
 
