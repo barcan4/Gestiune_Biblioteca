@@ -35,6 +35,7 @@ public class ServletLogin extends HttpServlet {
             User user_logged = user.logIn(user_name, parola);
             if (user_logged != null) {
                 req.getSession().setAttribute("user_logged", user_logged);
+                req.getSession().setAttribute("user_name", user_name);
                 resp.sendRedirect(req.getContextPath() + "/dispatcher");
             }
         }
